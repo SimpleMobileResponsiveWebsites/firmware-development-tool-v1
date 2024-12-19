@@ -9,7 +9,7 @@ click==8.1.7
 typing-extensions==4.10.0
 python-dateutil==2.9.0.post0
 six==1.16.0
-packaging==24.0
+packaging==23.2
 toml==0.10.2
 validators==0.22.0
 pyyaml==6.0.1
