@@ -2,7 +2,7 @@ import streamlit as st
 import pyperclip
 
 def generate_firmware_structure(platform, features):
-    return f'''// Platform: {platform}
+    return f"""// Platform: {platform}
 // Firmware for Crypto Mining Optimization
 
 #include <efi.h>
@@ -23,12 +23,12 @@ typedef enum {{
 }} FirmwareStatus;
 
 // Monitoring Data Structure
-typedef struct {
+typedef struct {{
     UINT32 hash_rate;
     UINT32 power_consumption;
     UINT32 temperature;
     UINT32 fan_speed;
-} MinerStatus;
+}} MinerStatus;
 
 // Function prototypes
 void InitializeHardware(void);
@@ -37,8 +37,8 @@ void OptimizeSettings(MinerStatus* status);
 void ApplyThermalManagement(MinerStatus* status);
 
 // Main entry point
-EFI_STATUS EFIAPI efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
-    MinerStatus status = {0};
+EFI_STATUS EFIAPI efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {{
+    MinerStatus status = {{0}};
 
     // Initialize EFI library
     InitializeLib(ImageHandle, SystemTable);
@@ -47,46 +47,46 @@ EFI_STATUS EFIAPI efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable
     InitializeHardware();
 
     // Monitor and optimize performance
-    while (TRUE) {
+    while (TRUE) {{
         FirmwareStatus fw_status = MonitorPerformance(&status);
 
-        if (fw_status != STATUS_OK) {
+        if (fw_status != STATUS_OK) {{
             ApplyThermalManagement(&status);
-        }
+        }}
 
         OptimizeSettings(&status);
-    }
+    }}
 
     return EFI_SUCCESS;
-}
+}}
 
 // Function Definitions
-void InitializeHardware(void) {
+void InitializeHardware(void) {{
     // Code to initialize mining rig hardware
-}
+}}
 
-FirmwareStatus MonitorPerformance(MinerStatus* status) {
+FirmwareStatus MonitorPerformance(MinerStatus* status) {{
     // Retrieve performance metrics (mock implementation)
     status->hash_rate = 95000; // Example value
     status->power_consumption = 1100; // Example value
     status->temperature = 70; // Example value
     status->fan_speed = 85; // Example value
 
-    if (status->temperature > TEMP_THRESHOLD) {
+    if (status->temperature > TEMP_THRESHOLD) {{
         return STATUS_WARN;
-    }
+    }}
 
     return STATUS_OK;
-}
+}}
 
-void OptimizeSettings(MinerStatus* status) {
+void OptimizeSettings(MinerStatus* status) {{
     // Code to adjust power limits, hash rates, etc.
-}
+}}
 
-void ApplyThermalManagement(MinerStatus* status) {
+void ApplyThermalManagement(MinerStatus* status) {{
     // Code to manage fan speeds and reduce load
-}
-'''
+}}
+"""
 
 def main():
     st.title("Crypto Mining Firmware Generator")
